@@ -80,7 +80,7 @@ export class TFJSEngine {
         [...kernelValues, ...kernelValues, ...kernelValues],
         [3, 3, 3, 1],
       );
-      const laplacian = tf.conv2d(input, kernel, 1, "same").abs();
+      const laplacian = tf.conv2d(input as tf.Tensor4D, kernel as tf.Tensor4D, 1, "same").abs();
       const { variance } = tf.moments(laplacian);
       return { laplacianVariance: variance.dataSync()[0] };
     });
@@ -114,10 +114,7 @@ export class TFJSEngine {
 
   async computeImageFeatures(imageElement: HTMLImageElement | HTMLCanvasElement): Promise<Float32Array> {
     await this.loadModels();
-    const embedding = tf.tidy(() => {
-      const image = tf.browser.fromPixels(imageElement).resizeBilinear([224, 224]).toFloat();
-      return this.mobileNetModel!.infer(image, true) as tf.Tensor;
-    });
+    const embedding = this.mobileNetModel!.infer(imageElement as never, true) as unknown as tf.Tensor;
     const data = new Float32Array(await embedding.data());
     embedding.dispose();
     return data;

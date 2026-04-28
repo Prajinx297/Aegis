@@ -23,7 +23,9 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { BlockchainVerification } from "@/components/BlockchainVerification";
 import { IntegrityMonitor } from "@/components/IntegrityMonitor";
+import { ThreatMap } from "@/components/ThreatMap";
 import { TrustScoreCard } from "@/components/TrustScoreCard";
 import { ExplainabilityPanel } from "@/components/ExplainabilityPanel";
 import { cn } from "@/lib/cn";
@@ -207,6 +209,14 @@ export function IntelligencePage() {
             />
           )}
         </div>
+      </div>
+
+      {/* Threat Map + Blockchain Verification */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        <ThreatMap threats={threats} />
+        {selectedAsset && (
+          <BlockchainVerification asset={selectedAsset.asset} />
+        )}
       </div>
 
       {/* Inline integrity monitor */}
