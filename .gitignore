@@ -5,3 +5,6 @@ dist-ssr
 .env
 .env.*
 .vendor
+__pycache__/
+*.pyc
+*.pyo
