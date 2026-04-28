@@ -16,6 +16,8 @@ import { LandingPage } from "@/pages/LandingPage";
 import { RegisterPage } from "@/pages/RegisterPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { ThreatsPage } from "@/pages/ThreatsPage";
+import { IntelligencePage } from "@/pages/IntelligencePage";
+import { AttackSimulatorPage } from "@/pages/AttackSimulatorPage";
 
 const titles: Record<string, string> = {
   "/dashboard": "Main Command Center",
@@ -27,6 +29,8 @@ const titles: Record<string, string> = {
   "/analytics": "Analytics Suite",
   "/explainability": "AI Decision Explainability",
   "/settings": "Preferences & Security Settings",
+  "/intelligence": "Intelligence Center",
+  "/attack-simulator": "Adversarial Robustness Test",
 };
 
 function ShellLayout() {
@@ -79,6 +83,8 @@ export default function App() {
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/explainability" element={<ExplainabilityPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/intelligence" element={<IntelligencePage />} />
+          <Route path="/attack-simulator" element={<AttackSimulatorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
