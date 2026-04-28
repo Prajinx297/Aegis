@@ -6,11 +6,13 @@ import {
   FileWarning,
   Home,
   LayoutDashboard,
+  Radar,
   SearchCheck,
   Settings,
   Shield,
   ShieldAlert,
   X,
+  Zap,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { AegisLogo } from "@/components/AegisLogo";
@@ -25,6 +27,8 @@ const navItems = [
   { to: "/dmca", label: "DMCA", icon: FileWarning },
   { to: "/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/explainability", label: "XAI", icon: BrainCircuit },
+  { to: "/intelligence", label: "Intelligence", icon: Radar, live: true },
+  { to: "/attack-simulator", label: "Attack Sim", icon: Zap },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 
