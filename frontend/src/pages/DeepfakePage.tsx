@@ -77,7 +77,7 @@ export function DeepfakePage() {
       const perturbation = tf.randomUniform(imageTensor.shape, -eps, eps);
       return imageTensor.add(perturbation).clipByValue(0, 1);
     });
-    await tf.browser.toPixels(adversarial, canvas);
+    await tf.browser.toPixels(adversarial as tf.Tensor3D, canvas);
     adversarial.dispose();
     const predictions = await tfEngine.classifyImage(canvas);
     setAdvPrediction(`${predictions[0].className} (${(predictions[0].probability * 100).toFixed(1)}%)`);
